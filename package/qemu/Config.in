@@ -52,6 +52,7 @@ config BR2_PACKAGE_QEMU_SYSTEM
 	bool "Enable systems emulation"
 	depends on !BR2_STATIC_LIBS # dtc
 	select BR2_PACKAGE_PIXMAN
+	select BR2_PACKAGE_QEMU_FDT if !BR2_PACKAGE_QEMU_CHOOSE_TARGETS
 	help
 	  Say 'y' to build system emulators/virtualisers.
 
@@ -104,6 +105,15 @@ config BR2_PACKAGE_QEMU_FDT
 	help
 	  Say 'y' here to have QEMU capable of constructing Device
 	  Trees, and passing them to the VMs.
+
+config BR2_PACKAGE_QEMU_TRACING
+	bool "Enable tracing"
+	help
+	  Say 'y' to enable the "log" tracing infrastructure in QEMU,
+	  used for debugging, profiling, and observing execution. For
+	  detailed documentation, see
+
+	  https://www.qemu.org/docs/master/devel/tracing.html
 
 endif # BR2_PACKAGE_QEMU_SYSTEM
 
